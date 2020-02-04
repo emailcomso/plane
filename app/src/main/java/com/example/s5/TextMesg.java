@@ -10,7 +10,7 @@ import java.util.Calendar;
 
 import static android.content.Context.ALARM_SERVICE;
 
-public class DMessages {
+public class TextMesg {
     static final String TYPE_EXTRA = "type";
     public void messageSchedule(Context context){
         Calendar calendar = Calendar.getInstance();
@@ -36,7 +36,7 @@ public class DMessages {
     }
 
     private void scheduleMessage(Calendar calendar, Context context, int type) {
-        Intent i = new Intent(context, Rcvr.class);
+        Intent i = new Intent(context, BroadcastReceverOfMsgs.class);
         i.putExtra(TYPE_EXTRA, type);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, type, i, PendingIntent.FLAG_UPDATE_CURRENT);

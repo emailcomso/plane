@@ -11,17 +11,17 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 
 
-public class Rcvr extends BroadcastReceiver {
+public class BroadcastReceverOfMsgs extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        int type = intent.getIntExtra(DMessages.TYPE_EXTRA, 0);
+        int type = intent.getIntExtra(TextMesg.TYPE_EXTRA, 0);
 
         Intent intentToRepeat = new Intent(context, MainActivity.class);
         intentToRepeat.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(context, type, intentToRepeat, PendingIntent.FLAG_UPDATE_CURRENT);
-        NotificationManager nm = new DMessages().getNotificationManager(context);
+        NotificationManager nm = new TextMesg().getNotificationManager(context);
         Notification notification = buildNotification(context, pendingIntent, nm).build();
         nm.notify(type, notification);
 

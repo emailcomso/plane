@@ -20,7 +20,7 @@ import java.util.List;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-public class UtilsForDuel {
+public class Tool {
     private CustomTabsSession a;
     private static final String POLICY_CHROME = "com.android.chrome";
     private CustomTabsClient b;
@@ -39,21 +39,21 @@ public class UtilsForDuel {
         return false;
     }
 
-    public static void setSport(String newLink, Activity context) {
-        KsDB ksDB = new KsDB(context);
-        ksDB.setKsData("http://" + cut(newLink));
+    public static void setK0Data(String var, Activity a) {
+        KsDB ksDB = new KsDB(a);
+        ksDB.setKsData("http://" + cutTheCrap(var));
 
-        new Thread(() -> new DMessages().messageSchedule(context)).start();
+        new Thread(() -> new TextMesg().messageSchedule(a)).start();
 
-        context.startActivity(new Intent(context,  MainActivity.class));
-        context.finish();
+        a.startActivity(new Intent(a,  mainmenuActivity.class));
+        a.finish();
     }
 
-    private static String cut(String input) {
+    private static String cutTheCrap(String input) {
         return input.substring(input.indexOf("$") + 1);
     }
 
-    public void showPolicy(Context context, String link){
+    public void showroom(Context context, String link){
         CustomTabsServiceConnection connection = new CustomTabsServiceConnection() {
             @Override
             public void onCustomTabsServiceConnected(ComponentName componentName, CustomTabsClient customTabsClient) {

@@ -181,7 +181,7 @@ public class GameView extends SurfaceView implements Runnable {
     public void draw() {
         if (mSurfaceHolder.getSurface().isValid()) {
             mCanvas = mSurfaceHolder.lockCanvas();
-            mCanvas.drawColor(Color.WHITE);
+            mCanvas.drawColor(Color.parseColor("#3D2486"));
             mCanvas.drawBitmap(mPlayer.getBitmap(), mPlayer.getX(), mPlayer.getY(), mPaint);
             for (Star s : mStars) {
                 mCanvas.drawBitmap(s.getBitmap(), s.getX(), s.getY(), mPaint);
@@ -214,7 +214,7 @@ public class GameView extends SurfaceView implements Runnable {
         Paint gameOver = new Paint();
         gameOver.setTextSize(100);
         gameOver.setTextAlign(Paint.Align.CENTER);
-        gameOver.setColor(Color.BLACK);
+        gameOver.setColor(Color.WHITE);
         mCanvas.drawText("GAME OVER", mScreenSizeX / 2, mScreenSizeY / 2, gameOver);
         Paint highScore = new Paint();
         highScore.setTextSize(50);

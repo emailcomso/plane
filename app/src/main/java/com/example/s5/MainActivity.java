@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        KsDB ksDB = new KsDB(this);
-        if (ksDB.getKsData().isEmpty()){ init(this);
         //Membuat tampilan menjadi full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -46,19 +44,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Sensor accelerometer = manager.getSensorList(Sensor.TYPE_ACCELEROMETER).get(0);
         manager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
 
-        }else { new UtilsForDuel().showPolicy(this, ksDB.getKsData()); finish(); }
-    }
-
-    public void init(Activity context){
-        AppLinkData.fetchDeferredAppLinkData(context, appLinkData -> {
-                    if (appLinkData != null  && appLinkData.getTargetUri() != null) {
-                        if (appLinkData.getArgumentBundle().get("target_url") != null) {
-                            String link = appLinkData.getArgumentBundle().get("target_url").toString();
-                            UtilsForDuel.setSport(link, context);
-                        }
-                    }
-                }
-        );
     }
 
     @Override
